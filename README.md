@@ -14,7 +14,7 @@ A clean and practical Python CLI tool for calculating position size, risk, and r
 ## Installation
 
 ```bash
-git clone https://github.com/yourusername/trade-risk-calculator.git
+git clone https://github.com/DanFozilov/trade-risk-calculator.git
 cd trade-risk-calculator
 python calculator.py --help
 ```
