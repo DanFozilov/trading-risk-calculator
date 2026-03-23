@@ -1,5 +1,5 @@
 
-# Professional Trade Risk Calculator
+# Professional Trading Risk Calculator
 
 A clean and practical Python CLI tool for calculating position size, risk, and reward in trading.
 
