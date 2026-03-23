@@ -1,4 +1,4 @@
-README = """
+
 # Professional Trade Risk Calculator
 
 A clean and practical Python CLI tool for calculating position size, risk, and reward in trading.
