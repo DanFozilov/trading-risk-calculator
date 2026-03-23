@@ -1,36 +1,65 @@
-A Python-based risk management tool for calculating precise position sizes and R/R ratios in trading (SMC/ICT models).
-# Trading Risk and Position Size Calculator
+README = """
+# Professional Trade Risk Calculator
 
-This is a Python-based utility developed to handle the mathematical side of trading risk management. It is specifically designed for traders using SMC or ICT models who need to calculate precise position sizes based on their stop loss and account equity.
+A clean and practical Python CLI tool for calculating position size, risk, and reward in trading.
 
-## Overview
-Programming and data analysis are my primary focuses, and I treat trading as a data-driven hobby. This project was built to bridge the gap between algorithmic logic and financial markets. It eliminates the emotional stress of manual calculations by providing a purely objective, mathematical approach to entry strategies.
+## Features
 
-## Key Features
-- Automatic Direction Detection: The system identifies whether a trade is Long or Short based on the entry and stop loss relationship.
-- Logic Validation: Includes strict validation rules to ensure Take Profit and Stop Loss levels are mathematically consistent with the trade direction.
-- Precision Sizing: Calculates the exact number of units to trade based on specific risk tolerance and account balance.
-- RR Ratio Analysis: Automatically calculates the Risk-to-Reward ratio to filter out low-probability setups.
-- OOP Structure: Built using Object-Oriented Programming principles to ensure the code is modular and maintainable.
+- Position sizing based on risk percentage
+- Supports LONG and SHORT trades
+- Optional leverage support
+- Fee estimation (entry + exit)
+- Flexible value-per-unit (works across markets)
 
-## Technical Logic
-The calculator follows the standard risk management formula:
-Position Size = (Account Balance * Risk Percentage) / |Entry - Stop Loss|
+## Installation
 
-## Tech Stack
-- Language: Python 3.x
-- Paradigm: Object-Oriented Programming (OOP)
+```bash
+git clone https://github.com/yourusername/trade-risk-calculator.git
+cd trade-risk-calculator
+python calculator.py --help
+```
 
-## How to Run
-1. Clone the repository:
-   git clone https://github.com/DanFozilov/trading-risk-calculator.git
+## Usage Example
 
-2. Run the script:
-   python main.py
+```bash
+python calculator.py \
+  --balance 5000 \
+  --risk 1 \
+  --entry 100 \
+  --sl 95 \
+  --tp 110 \
+  --value_per_unit 1 \
+  --leverage 3 \
+  --fee 0.04
+```
 
-3. Follow the terminal prompts to enter your balance, risk percentage, and price levels.
+## Parameters
 
----
+| Parameter | Description |
+|----------|------------|
+| balance | Account size in USD |
+| risk | Risk per trade (%) |
+| entry | Entry price |
+| sl | Stop loss |
+| tp | Take profit |
+| value_per_unit | Contract or asset value per unit |
+| leverage | Leverage multiplier |
+| fee | Fee percent per trade |
 
-### About the Developer
-I am a software developer with a strong focus on Data Analysis and its applications in Industrial Engineering. My long-term goal is to integrate Machine Learning into industrial processes to improve efficiency and decision-making. I prioritize building clean, maintainable systems that solve real-world optimization problems. Trading serves as a practical playground for testing mathematical logic, but my professional path is centered on data-driven engineering.
+## Important Notes
+
+- This tool is a simplified calculator, not a trading engine
+- Forex requires proper pip value handling
+- Futures require contract specifications
+- Slippage is not modeled
+
+## Roadmap
+
+- Web interface (Streamlit)
+- Telegram bot integration
+- Exchange-specific calculators
+
+## License
+
+MIT License
+"""
