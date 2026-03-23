@@ -1,4 +1,54 @@
 #!/usr/bin/env python3
+"""
+Professional Trade Risk Calculator
+--------------------------------
+Supports basic position sizing with:
+- configurable value per unit (works for stocks, crypto, forex approximation)
+- optional leverage awareness
+- fee estimation
+- clean CLI interface
+
+NOTE:
+This is still a simplified model. Real markets require instrument-specific calculations.
+"""
+
+from dataclasses import dataclass
+import argparse
+
+
+@dataclass
+class TradeResult:
+    trade_type: str
+    position_size: float
+    risk_dollars: float
+    potential_profit: float
+    rr_ratio: float
+    fees: float
+
+
+class TradeCalculator:
+    def __init__(self, balance: float, risk_percent: float, fee_percent: float = 0.0):
+        self.balance = balance
+        self.risk_percent = risk_percent
+        self.risk_amount = balance * (risk_percent / 100)
+        self.fee_percent = fee_percent / 100
+
+    def calculate(self, entry: float, stop_loss: float, take_profit: float,
+                  value_per_unit: float = 1.0, leverage: float = 1.0) -> TradeResult:
+
+        if entry == stop_loss:
+            raise ValueError("Stop Loss cannot be equal to Entry price.")
+
+        # Determine trade type
+        if stop_loss < entry:
+            if take_profit <= entry:
+                raise ValueError("For LONG, Take Profit must be above Entry.")
+            trade_type = "LONG"
+        else:
+            if take_profit >= entry:
+                raise ValueError("For SHORT, Take Profit must be below Entry.")
+            trade_type = "SHORT"
+
         price_risk = abs(entry - stop_loss)
         profit_per_unit = abs(take_profit - entry)
 
@@ -71,3 +121,5 @@ def main():
 
 if __name__ == "__main__":
     main()
+
+
